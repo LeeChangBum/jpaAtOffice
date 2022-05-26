@@ -14,8 +14,9 @@
             <property name="hibernate.show_sql" value="true"/><!--query를 보여줘라-->
             <property name="hibernate.format_sql" value="true"/><!--query를 "이쁘게" 보여줘라-->
             <property name="hibernate.use_sql_comments" value="true"/><!--query를 설명해줘라-->
-            <!--<property name="hibernate.jdbc.batch_size" value="10"/>//value만큼 SQL구문을 만들어 한방에 데이터베이스에 보낸다.-->
+            <!--<property name="hibernate.jdbc.batch_size" value="10"/>//(페이징에서 사용)value만큼 SQL구문을 만들어 한방에 데이터베이스에 보낸다.-->
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!--<property name="hibernate.default_batch_fetch_size" value="10"/>//(페치 조인에서 사용)한방에 데이터베이스에 in문을 사용해서 value만큼의 종류를 가지고온다.-->
         </properties>
     </persistence-unit>
 </persistence>

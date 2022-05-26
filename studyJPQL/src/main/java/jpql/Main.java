@@ -14,19 +14,41 @@ public class Main {
         tx.begin();
         try {
 
-                Team team=new Team();
-                team.setName("teamA");
-                em.persist(team);
+                Team teamA=new Team();
+                teamA.setName("teamA");
+                em.persist(teamA);
 
-                Member member = new Member();
-                member.setUsername("LeeChangBum");
-                member.setAge(10);
-                member.setTeam(team);
+                Team teamB=new Team();
+                teamB.setName("teamB");
+                em.persist(teamB);
 
-                em.persist(member);
+                Member member1 = new Member();
+                member1.setUsername("member1");
+                member1.setAge(10);
+                member1.setTeam(teamA);
+
+                Member member2 = new Member();
+                member2.setUsername("member3");
+                member2.setAge(10);
+                member2.setTeam(teamA);
+
+                Member member3 = new Member();
+                member3.setUsername("member3");
+                member3.setAge(10);
+                member3.setTeam(teamB);
+
+                em.persist(member1);
+                em.persist(member2);
+                em.persist(member3);
 
                 em.flush();
                 em.clear();
+
+                int resultCount=em.createQuery("update Member m  set m.age=m.age*1.1 where m.username=: username").setParameter("username","member3").executeUpdate();
+
+
+
+
 
             /*자 <Object[]>을 하지 않으면 m,t 두개를 받아야 하니까 List의 제너릭의 default값은 object이므로 object로써 반환을 한다.
             하지만 이는 어차피 object[]로 강제변환해야한다.(배열이 object를 상속받으므로 안해도 실행은 되지만 아무것도 못한다.->부모타입의 변수로 자식타입의 객체를 가리킬순 있지만 자식타입의 객체의 함수 및 변수는 사용할 수 없으므로)
