@@ -21,7 +21,7 @@ public class OrderServiceImp implements OrderService{
 
     public OrderServiceImp(MemberRepository memberRepository, DiscountPolicy disDiscountPolicy) { //->이걸 @RequiredArgsConstructor가 해줌
        this.memberRepository = memberRepository;
-        this.discountPolicy = disDiscountPolicy;
+       this.discountPolicy = disDiscountPolicy;
     }
 
     @Override
